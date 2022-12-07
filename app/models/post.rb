@@ -1,3 +1,5 @@
 class Post < ApplicationRecord
-    belong_to :admin, through: :user
+    validates :images, presence: true
+
+    belongs_to :user
 end
