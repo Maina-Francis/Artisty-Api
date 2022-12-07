@@ -1,17 +1,17 @@
 class UsersController < ApplicationController
     def index 
         users = User.all 
-        render json: users, include: :posts
+        render json: users, except: [:created_at, :updated_at] ,include: :posts 
     end
 
     def create
         user = User.create!(user_params)
-        render json: user
+        render json: user, except: [:created_at, :updated_at] 
     end
 
     def show 
         user = user_params
-        render json: user, include: :posts, status: :ok
+        render json: user,  except: [:created_at, :updated_at] , include: :posts, status: :ok
     end
 
     def destroy

@@ -2,25 +2,26 @@ class PostsController < ApplicationController
 rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_message
 rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_message
 
+
     def index 
         posts = Post.all 
-        render json: posts
+        render json: posts, except: [:created_at, :updated_at] 
     end
 
     def create
         post = Post.create!(create_post_params)
-        render json: post
+        render json: post, status: :accepted
     end
 
     def show 
         posts = post_params 
-        render json: posts, status: :ok
+        render json: posts,  except: [:created_at, :updated_at], status: :ok
     end
 
     def update
         post = post_params
         post.update!(create_post_params)
-        render json: post, status: :ok
+        render json: post,  except: [:created_at, :updated_at],  status: :ok
     end
 
     # private methods 
@@ -37,7 +38,8 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_mess
         render json: { error: "The Post wasn't found" }, status: :not_found
     end
 
-    def render_unproccessable_entity_message(invalid)
+
+    def render_unprocessable_entity_message(invalid)
         render json: {error: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
 end

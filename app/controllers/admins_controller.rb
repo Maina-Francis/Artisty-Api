@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
     def index 
         users = Admin.all 
-        render json: users, include: :users
+        render json: users, except: [:created_at, :updated_at] ,include: :users
     end
 
     def create
