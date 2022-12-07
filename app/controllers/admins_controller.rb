@@ -1,7 +1,7 @@
 class AdminsController < ApplicationController
     def index 
         users = Admin.all 
-        render json: users
+        render json: users, include: :users
     end
 
     def create

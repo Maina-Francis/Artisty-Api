@@ -1,3 +1,3 @@
 class Admin < ApplicationRecord
-    has_many :posts, through: :users, dependent: :destroy
+    has_many :users, dependent: :destroy
 end

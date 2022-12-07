@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
     def index 
         users = User.all 
-        render json: users
+        render json: users, include: :posts
     end
 
     def create
@@ -11,7 +11,17 @@ class UsersController < ApplicationController
 
     def show 
         user = user_params
-        render json: user, status: :ok
+        render json: user, include: :posts, status: :ok
+    end
+
+    def destroy
+        user = user_params
+        if user 
+            user.destroy
+            head :no_content
+        else
+            render json: {error: "User not found"}, status: :not_found
+        end
     end
 
     #private methods
