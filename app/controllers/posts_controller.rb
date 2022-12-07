@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_message
+rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_message
 
     def index 
         posts = Post.all 
@@ -29,5 +31,13 @@ class PostsController < ApplicationController
 
     def create_post_params
         params.permit(:description, :images)
+    end
+
+    def render_not_found_message
+        render json: { error: "The Post wasn't found" }, status: :not_found
+    end
+
+    def render_unproccessable_entity_message(invalid)
+        render json: {error: invalid.record.errors.full_messages}, status: :unprocessable_entity
     end
 end
