@@ -1,4 +1,5 @@
 class AdminsController < ApplicationController
+
     def index 
         users = Admin.all 
         render json: users, except: [:created_at, :updated_at] ,include: :users
@@ -14,4 +15,5 @@ class AdminsController < ApplicationController
     def admin_params
         params.permit(:name)
     end
+
 end
