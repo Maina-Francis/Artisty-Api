@@ -5,3 +5,28 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+puts "Seeding data..."
+
+5.times do 
+    Admin.create(
+        name: Faker::Name.name 
+    )
+end
+
+10.times do 
+    User.create(
+        name: Faker::Name.name
+        
+    )
+end
+
+20.times do 
+    Post.create(
+        description: Faker::Lorem.sentence(word_count: 5),
+        likes: rand(1..50),
+        user_id: rand(1..10),
+        admin_id: rand(1..10)
+    )
+end
+puts "Done Seeding Data..."
