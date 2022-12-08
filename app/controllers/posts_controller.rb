@@ -31,7 +31,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_mess
     end
 
     def create_post_params
-        params.permit(:description, :images, :admin_id)
+        params.permit(:description, :images, :admin_id, :user_id)
     end
 
     def render_not_found_message
