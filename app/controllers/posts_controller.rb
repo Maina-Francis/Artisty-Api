@@ -14,10 +14,31 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_mess
         render json: post, status: :accepted
     end
 
+    # DELETE /posts/:id
+    def destroy
+        post = Post.find_by(id: params[:id])
+        if post
+            post.destroy
+            head :no_content
+        else
+          render json: { error: "Post not found" }, status: :not_found
+        end
+    end
+
     def show 
         posts = post_params 
         render json: posts,  except: [:created_at, :updated_at], status: :ok
     end
+
+    # GET /posts/:id    #I suggest we use this
+    #def show
+    #    post = Post.find_by(id: params[:id])
+    #    if post
+    #        render json: post
+    #    else
+    #        render json: { error: "Post not found" }, status: :not_found
+    #    end
+    #end
 
     def update
         post = post_params
