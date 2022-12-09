@@ -20,7 +20,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
 
     def login
         admin = Admin.find_by(email: params[:email])
-        if params[:password] == admin.password
+        if admin&.authenticate(params[:password])
             session[:admin_id] = admin.id
         render json: admin, status: :ok
         else  
