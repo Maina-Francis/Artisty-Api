@@ -7,12 +7,20 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Seeding data..."
-
+User.create!([{"first_name": "ken",
+    "last_name": "kiogora",
+    "email": "efrain@green.co",
+    "password": "J89vScTiF38eOlU",
+    "admin_id": 4}])
+#Admin.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password  )
+#User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password  )
+=begin
 5.times do 
     Admin.create(
-        name: Faker::Name.name 
+        name: Faker::Name.name
     )
 end
+
 
 10.times do 
     User.create(
@@ -30,4 +38,6 @@ end
         images: "https://images.unsplash.com/flagged/photo-1572392640988-ba48d1a74457?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8YXJ0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"
     )
 end
+=end
+
 puts "Done Seeding Data..."
