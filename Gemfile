@@ -14,6 +14,7 @@ gem "puma", "~> 5.0"
 
 #Faker gem 
 gem "faker"
+gem "byebug"
 
 #Active Model Serializer gem
 gem 'active_model_serializers'

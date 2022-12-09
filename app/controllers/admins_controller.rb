@@ -8,6 +8,17 @@ rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
         render json: users, except: [:created_at, :updated_at] ,include: :users
     end
 
+#users to be created by admin
+    def add_user
+        admin = Admin.find(params[:id])
+        user = admin.users.create!(user_params)
+
+        render json: user, except: [:created_at, :updated_at] 
+    end
+
+
+
+
     def create
         admin = Admin.create!(admin_params)
         render json: admin
@@ -26,12 +37,13 @@ rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
         else  
             render json: {error: "invalid email or password"}, status: :unauthorized
         end
-
-        def signout
-            session.delete :admin_id
-            head :no_content
-        end 
     end
+    
+
+    def signout
+        admin = Admin.find(session[:user_id]).destroy
+        head :no_content
+    end 
 
 
 
@@ -48,6 +60,10 @@ rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
     def admin_not_found
         render json: {error: "admin not found"}, status: :not_found
 
+    end
+
+    def user_params
+         params.permit(:first_name, :last_name, :email, :password_digest)
     end
 
 end
