@@ -25,6 +25,14 @@ class UsersController < ApplicationController
         end
     end
 
+
+    def signup
+         #create a user
+         user = User.create!(params.permit (:first_name, :last_name, :email, :password_digest))
+         render json: user
+        
+    end
+
     #private methods
     private 
     def user_params
