@@ -26,6 +26,11 @@ rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
         else  
             render json: {error: "invalid email or password"}, status: :unauthorized
         end
+
+        def signout
+            session.delete :admin_id
+            head :no_content
+        end 
     end
 
 
