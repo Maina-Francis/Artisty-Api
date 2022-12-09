@@ -1,5 +1,7 @@
 class AdminsController < ApplicationController
-rescue_from ActiveRecord::RecordInvalid, with: :invalid_user_details
+rescue_from ActiveRecord::RecordInvalid, with: :invalid_admin_details
+rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
+
 
     def index 
         users = Admin.all 
@@ -13,11 +15,17 @@ rescue_from ActiveRecord::RecordInvalid, with: :invalid_user_details
 
     def signup
         admin = Admin.create!(params.permit(:first_name, :last_name, :email, :password))
-        render json: admin
+        render json: admin, status: :created
     end
 
     def login
-        admin = find_bu
+        admin = Admin.find_by(email: params[:email])
+        if params[:password] == admin.password
+            session[:admin_id] = admin.id
+        render json: admin, status: :ok
+        else  
+            render json: {error: "invalid email or password"}, status: :unauthorized
+        end
     end
 
 
@@ -28,8 +36,13 @@ rescue_from ActiveRecord::RecordInvalid, with: :invalid_user_details
         params.permit(:name)
     end
 
-    def invalid_user_details
-        rendr json: {error: "invalid details"} status: :404
+    def invalid_admin_details
+        render json: {error: "invalid details"}, status: :invalid_admin_details
+    end
+
+    def admin_not_found
+        render json: {error: "admin not found"}, status: :not_found
+
     end
 
 end
