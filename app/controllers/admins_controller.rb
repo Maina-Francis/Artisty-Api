@@ -4,8 +4,8 @@ rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
 
 
     def index 
-        users = Admin.all 
-        render json: users, except: [:created_at, :updated_at] ,include: :users
+        admins = Admin.all 
+        render json: admins, except: [:created_at, :updated_at] ,include: :users
     end
 
 #users to be created by admin
@@ -50,7 +50,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
     #private methods
     private 
     def admin_params
-        params.permit(:name)
+        params.permit(:first_name, :last_name, :email, :password_digest)
     end
 
     def invalid_admin_details
@@ -63,7 +63,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
     end
 
     def user_params
-         params.permit(:first_name, :last_name, :email, :password_digest)
+         params.permit(:first_name, :last_name, :email)
     end
 
 end
