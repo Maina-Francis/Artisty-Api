@@ -15,7 +15,21 @@ User.create!([{"first_name": "ken", "last_name": "kiogora", "email": "efrain@gre
      {"first_name": "susan", "last_name": "muthike", "email": "susan@gmail", "password": "pray", "admin_id": 6}
 
  ])
+
+ Admin.create!([ {"first_name": "Edwin", "last_name": "mark", "email": "efrain@green.co", "password_digest": "J89vScTiF38eOlU"},
+    {"first_name": "patriv", "last_name": "kai", "email": "efrain.co", "password_digest": "J89vScTiF"},
+    {"first_name": "walker", "last_name": "john", "email": "walker.co", "password_digest": "J89"},
+    {"first_name": "alvo", "last_name": "kiogo", "email": "alvo.co", "password_digest": "OlU"},
+    {"first_name": "Kai", "last_name": "hervetz", "email": "kai.co", "password_digest": "xyz"},
+    {"first_name": "kiago", "last_name": "eric", "email": "kiago.co", "password_digest": "kiago"},
+    {"first_name": "kui", "last_name": "kamongo", "email": "kui.co", "password_digest": "mno"},
+    {"first_name": "musa", "last_name": "muha", "email": "muha.co", "password_digest": "muha"}
+
+ ])
 #Admin.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password  )
+
+
+
 #User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password  )
 =begin
 5.times do 
