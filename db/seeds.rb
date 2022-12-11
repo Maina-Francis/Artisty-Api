@@ -7,11 +7,14 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 puts "Seeding data..."
-User.create!([{"first_name": "ken",
-    "last_name": "kiogora",
-    "email": "efrain@green.co",
-    "password": "J89vScTiF38eOlU",
-    "admin_id": 4}])
+User.create!([{"first_name": "ken", "last_name": "kiogora", "email": "efrain@green.co", "password": "J89vScTiF38eOlU", "admin_id": 4}, 
+    {"first_name": "dennis", "last_name": "Muriithi", "email": "gmail.cml", "password": "J89vScTiF3455", "admin_id": 3},
+     {"first_name": "christine", "last_name": "chebet", "email": "chris@gmail", "password": "123chris", "admin_id": 1},
+     {"first_name": "cheb", "last_name": "maina", "email": "cheb@gmail", "password": "123cheb", "admin_id": 2},
+     {"first_name": "pauline", "last_name": "chepkorir", "email": "@gmail", "password": "cheb", "admin_id": 5},
+     {"first_name": "susan", "last_name": "muthike", "email": "susan@gmail", "password": "pray", "admin_id": 6}
+
+ ])
 #Admin.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password  )
 #User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password: Faker::Internet.password  )
 =begin
