@@ -2,6 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.hosts << "artisty-production.up.railway.app"
 
   # Code is not reloaded between requests.
   config.cache_classes = true
@@ -31,6 +32,8 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
   config.host << "Artisty-Api-production".up.railway.app
+
+
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
