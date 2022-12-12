@@ -10,7 +10,7 @@ rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_mess
     end
 
     def create
-        post = Post.create!(create_post_params)
+        post = Post.create(create_post_params)
         render json: post, status: :accepted
     end
 

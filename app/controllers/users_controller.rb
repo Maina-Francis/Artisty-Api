@@ -5,10 +5,10 @@ class UsersController < ApplicationController
         render json: users, except: [:created_at, :updated_at], include: :posts 
     end
 
-    # def create
-    #     user = User.create!(user_params)
-    #     render json: user, except: [:created_at, :updated_at] 
-    # end
+    def create
+        user = User.create!(user_params)
+        render json: user, except: [:created_at, :updated_at] 
+    end
 
     def show 
         user = user_params
@@ -35,9 +35,9 @@ class UsersController < ApplicationController
 
     #private methods
     private 
-    # def user_params
-    #     params.permit(:first_name, :last_name, :email, :password_digest)
-    # end
+    def user_params
+        params.permit(:first_name, :last_name, :email, :password_digest, :admin_id)
+    end
 
     def user_params
         User.find(params[:id])

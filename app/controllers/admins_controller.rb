@@ -25,7 +25,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
     end
 
     def signup
-        admin = Admin.create!(params.permit(:first_name, :last_name, :email, :password, :password_confirmation))
+        admin = Admin.create(params.permit(:first_name, :last_name, :email, :password, :password_confirmation))
         render json: admin, status: :created
     end
 
@@ -63,7 +63,7 @@ rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
     end
 
     def user_params
-         params.permit(:first_name, :last_name, :email)
+        params.permit(:first_name, :last_name, :email)
     end
 
 end
