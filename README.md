@@ -7,6 +7,8 @@ This project was created using:
 
 * Postgres SQL
 
+* Rails 6
+
 This project is hosted on railway and the domain name is:
 https://artisty-production.up.railway.app/admins for the admins table,:
 https://artisty-production.up.railway.app/users for the users table and:
