@@ -1,24 +1,15 @@
-# README
+# Phase-4-backend-project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project was created using:
 
-Things you may want to cover:
 
-* Ruby version
+* Ruby version 2.7.4
 
-* System dependencies
+* Postgres SQL
 
-* Configuration
+This project is hosted on railway and the domain name is:
+https://artisty-production.up.railway.app/admins for the admins table,:
+https://artisty-production.up.railway.app/users for the users table and:
+https://artisty-production.up.railway.app/posts for the posts table.
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Controllers on the project allow for different CRUD operations on both the authors and the books table
